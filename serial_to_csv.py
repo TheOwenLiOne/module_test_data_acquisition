@@ -1,6 +1,7 @@
 import serial
 import csv
 import re
+import thermistor_calc as tc
 
 ser = serial.Serial('COM3', 115200)  
 header = [str(i) for i in range(64)]
@@ -14,16 +15,16 @@ time_step = []
 while True:
     try:
         line = ser.readline().decode('utf-8').strip()  # Read a line of serial data
-        print(line)  # Print the line to the console
 
         if i>=2:
-            data = re.findall(r'(?<!\d)\d{3,}(?!\d)', line)
-            time_step.extend(data)
+            v = float(line.split()[2])
+            v /= 1000
+            temperature = tc.calculate_temperature(tc.calculate_resistance(2.1))
+            time_step.append(temperature)
 
             if len(time_step) >= 64:
                 csvWriter.writerow(time_step[:64])
                 time_step = time_step[64:]
-
         i+=1
 
     except KeyboardInterrupt:

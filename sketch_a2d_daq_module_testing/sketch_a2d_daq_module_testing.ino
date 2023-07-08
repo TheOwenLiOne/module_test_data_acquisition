@@ -22,10 +22,10 @@ void setup() {
 
 void loop() {
   for (int i = 0; i < NUM_CHANNELS; i++) {
-    Serial.print("Channel");
+    Serial.print("Channel ");
     Serial.print(i);
     Serial.print(": ");
-    Serial.println(daq.A2D_DAQ_get_analog(i));
+    Serial.println(daq.A2D_DAQ_get_analog_mv(i));
   }
 
   delay(5000);
