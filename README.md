@@ -19,8 +19,7 @@ Thermistors provide resistance as a function of temperature:
 2. the voltage can be used to calculate the resistance of the thermistor
    [thermistor_calc.py](thermistor_calc.py)
 
-   $V*{\text{{thermistor}}} = \frac{{V*{\text{{thermistor}}}}}{{V_{\text{{daq}}} - V*{\text{{thermistor}}}}} \cdot R*{\text{{daq}}}
-   $
+   $V*{\text{{thermistor}}} = \frac{{V*{\text{{thermistor}}}}}{{V_{\text{{daq}}} - V*{\text{{thermistor}}}}} \cdot R*{\text{{daq}}}$
 
 3. the temperature can be interpolated from the thermistor resistance:
    [thermistor_calc.py](thermistor_calc.py)
