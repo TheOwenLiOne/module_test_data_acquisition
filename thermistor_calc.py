@@ -26,5 +26,3 @@ def calculate_temperature(R):
         return T
     except ZeroDivisionError:
         return None
-    
-    print(calculate_resistance(1.5))
