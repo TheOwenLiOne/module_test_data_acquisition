@@ -16,7 +16,7 @@ the voltage can be used to calculate the resistance of the thermistor, from whic
 
 $$R_{\text{{thermistor}}} = \frac{{V_{\text{{thermistor}}}}}{{V_{\text{{daq}}} - V_{\text{{thermistor}}}}} \cdot R_{\text{{daq}}}$$
 
-$$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R)}}$$
+$$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R_{\text{{thermistor}}})}}$$
 
 ## to-do
 
