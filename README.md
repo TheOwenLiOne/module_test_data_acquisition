@@ -2,7 +2,7 @@
 
 [serial_to_csv.py](serial_to_csv.py) is a serial monitoring application which also writes all the data to [data.csv](data.csv)
 
-[sketch_a2d_daq_module_testing](sketch_a2d_daq_module_testing) contains the sketch(arduino firmware) for the A2D 64 Channel DAQ
+[sketch_a2d_daq_module_testing](sketch_a2d_daq_module_testing) contains the sketch(arduino firmware) for the [A2D 64CH DAQ](https://github.com/mbA2D/A2D_DAQ)
 
 ## thermistors & daq
 
@@ -24,4 +24,4 @@ calibrate the thermistors: [thermistor calibration](https://www.mstarlabs.com/se
 
 ## acknowledgments
 
-hardware, libraries, and documentation for the DAQ were created/designed by [mbA2D](https://github.com/mbA2D)
+hardware, libraries, and documentation for the [A2D 64CH DAQ](https://github.com/mbA2D/A2D_DAQ) were created/designed by [mbA2D](https://github.com/mbA2D)
