@@ -4,8 +4,6 @@
 
 [sketch_a2d_daq_module_testing](sketch_a2d_daq_module_testing) contains the sketch(arduino firmware) for the A2D 64 Channel DAQ
 
-if you want to change the firmware on the DAQ, refer to the following Arduino library: https://github.com/kostubhagarwal/A2D_DAQ
-
 ## thermistors & daq
 
 thermistors provide resistance as a function of temperature:
