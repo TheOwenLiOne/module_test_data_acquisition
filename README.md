@@ -8,23 +8,18 @@ if you want to change the firmware on the DAQ, refer to the following Arduino li
 
 ## thermistors & daq
 
-Thermistors provide resistance as a function of temperature:
-[NTC 10K 3380s](https://octopart.com/nxrt15xh103fa1b030-murata-25915268)
+thermistors provide resistance as a function of temperature:
+[NTC 10K 3380s](https://octopart.com/nxrt15xh103fa1b030-murata-25915268). the daq measures the voltage across a thermistor using a voltage divider configuration:
+[A2D 64CHDAQ Documentation](</module_testing_daq/documentation/A2D%2064CHDAQ%20Documentation%20(Draft).pdf>)
 
-1. the daq measures the voltage across a thermistor using a voltage divider configuration:
-   [A2D 64CHDAQ Documentation](</module_testing_daq/documentation/A2D%2064CHDAQ%20Documentation%20(Draft).pdf>)
+![](/documentation/image.png)
 
-   ![](/documentation/image.png)
+the voltage can be used to calculate the resistance of the thermistor, from which temperature can be interpolated: [thermistor_calc.py](thermistor_calc.py)
 
-2. the voltage can be used to calculate the resistance of the thermistor
-   [thermistor_calc.py](thermistor_calc.py)
+$V_{\text{{thermistor}}} = \frac{{V_{\text{{thermistor}}}}}{{V_{\text{{daq}}} - V_{\text{{thermistor}}}}} \cdot R_{\text{{daq}}}$
 
-   $V_{\text{{thermistor}}} = \frac{{V_{\text{{thermistor}}}}}{{V_{\text{{daq}}} - V_{\text{{thermistor}}}}} \cdot R_{\text{{daq}}}$
+$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R)}}$
 
-3. the temperature can be interpolated from the thermistor resistance:
-   [thermistor_calc.py](thermistor_calc.py)
+## to-do
 
-   $T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R)}}$
-
-4. calibrating the thermistors (TO-DO):
-   [Thermistor calibration](https://www.mstarlabs.com/sensors/thermistor-calibration.html)
+calibrate the thermistors: [thermistor calibration](https://www.mstarlabs.com/sensors/thermistor-calibration.html)
