@@ -18,7 +18,7 @@ while True:
 
         if i>=2:
             v = (float(line.split()[2]))/1000 # extract voltage from serial monitor (V)
-            temperature = tc.calculate_temperature(tc.calculate_resistance(2.1)) # calculate temperature from voltage across thermistor (C)
+            temperature = tc.calculate_temperature(tc.calculate_resistance(v)) # calculate temperature from voltage across thermistor (C)
             time.append(temperature) # append temperature to list of readings for a given time
 
             if len(time_step) >= 64:
