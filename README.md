@@ -24,4 +24,4 @@ calibrate the thermistors: [thermistor calibration](https://www.mstarlabs.com/se
 
 ## acknowledgments
 
-hardware, libraries, and documentation for the DAQ were created by: https://github.com/mbA2D
+hardware, libraries, and documentation for the DAQ were created/designed by [mbA2D](https://github.com/mbA2D)
