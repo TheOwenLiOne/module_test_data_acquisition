@@ -8,7 +8,7 @@
 
 thermistors provide resistance as a function of temperature:
 [NTC 10K 3380s](https://octopart.com/nxrt15xh103fa1b030-murata-25915268). the daq measures the voltage across a thermistor using a voltage divider configuration:
-[A2D 64CHDAQ Documentation](</module_testing_daq/documentation/A2D%2064CHDAQ%20Documentation%20(Draft).pdf>)
+[A2D 64CHDAQ Hardware Documentation (DRAFT)](</documentation/A2D_64CHDAQ_Hardware_Documentation_(Draft).pdf>)
 
 ![](/documentation/image.png)
 
