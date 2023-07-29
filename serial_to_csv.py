@@ -10,7 +10,7 @@ header = [str(i) for i in range(64)] # initiate columns for csv file
 csvWriter.writerow(header) # write header to csv file
 
 i = 0 # counter for number of lines read
-time = [] #initiale list of reading for a given time
+time_step = [] #initial list of reading for a given time
 
 while True:
     try:
@@ -18,9 +18,9 @@ while True:
 
         if i>=2:
             v = (float(line.split()[2]))/1000 # extract voltage from serial monitor (V)
-            temperature = tc.calculate_temperature(tc.calculate_resistance(v)) # calculate temperature from voltage across thermistor (C)
-            time.append(temperature) # append temperature to list of readings for a given time
-
+            temperature = tc.calculate_temperature(tc.calculate_resistance(abs(v))) # calculate temperature from voltage across thermistor (C)
+            time_step.append(temperature) # append temperature to list of readings for a given time
+            
             if len(time_step) >= 64:
                 csvWriter.writerow(time_step[:64]) # write 64 readings to csv file
                 time_step = time_step[64:]

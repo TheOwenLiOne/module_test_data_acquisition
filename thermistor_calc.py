@@ -18,11 +18,12 @@ def calculate_resistance(V):
         return None
 
 def calculate_temperature(R):
-    try:
-        ln_R_R0 = math.log(R / R0)
-        inv_T = (1 / T0) + (1 / B) * ln_R_R0
-        T = 1 / inv_T
-        T -= X
-        return T
-    except ZeroDivisionError:
-        return None
+    if R >= 0:
+        try:
+            ln_R_R0 = math.log(R / R0)
+            inv_T = (1 / T0) + (1 / B) * ln_R_R0
+            T = 1 / inv_T
+            T -= X
+            return T
+        except ZeroDivisionError:
+            return None
