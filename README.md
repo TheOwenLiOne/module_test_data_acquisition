@@ -18,6 +18,14 @@ $$R_{\text{{thermistor}}} = \frac{{V_{\text{{thermistor}}}}}{{V_{\text{{daq}}} -
 
 $$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R_{\text{{thermistor}}})}}$$
 
+## steps
+
+1. git clone library
+2. connect the daq via usb
+3. run serial_to_csv.py
+4. ctrl-c to quit
+5. find data (celsius) in data.xlsx
+
 ## to-do
 
 calibrate the thermistors: [thermistor calibration](https://www.mstarlabs.com/sensors/thermistor-calibration.html)
