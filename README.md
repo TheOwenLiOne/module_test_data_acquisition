@@ -27,6 +27,10 @@ $$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R_{\text{{thermistor}}})
 5. ctrl-c to quit
 6. find data (celsius) in data.xlsx
 
+## troubleshooting
+
+If Arduino IDE cannot find the port then make sure you are using a USB capable of data-transfer & you have the CP210x Driver installed: https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+
 ## to-do
 
 calibrate the thermistors: [thermistor calibration](https://www.mstarlabs.com/sensors/thermistor-calibration.html)
