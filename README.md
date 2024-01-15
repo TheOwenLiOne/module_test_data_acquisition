@@ -21,10 +21,11 @@ $$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R_{\text{{thermistor}}})
 ## steps
 
 1. git clone library
-2. connect the daq via usb
-3. run serial_to_csv.py
-4. ctrl-c to quit
-5. find data (celsius) in data.xlsx
+2. download & install https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+3. connect the daq via usb
+4. run serial_to_csv.py
+5. ctrl-c to quit
+6. find data (celsius) in data.xlsx
 
 ## to-do
 
