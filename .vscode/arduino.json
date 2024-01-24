@@ -1,7 +1,7 @@
 {
-    "configuration": "cpu=8MHzatmega328",
-    "board": "arduino:avr:pro",
-    "programmer": "avrisp",
-    "port": "COM3",
-    "sketch": "sketch_a2d_daq_module_testing\\sketch_a2d_daq_module_testing.ino"
+  "configuration": "cpu=8MHzatmega328",
+  "board": "arduino:avr:pro",
+  "programmer": "avrisp",
+  "port": "COM5",
+  "sketch": "sketch_a2d_daq_module_testing\\sketch_a2d_daq_module_testing.ino"
 }
