@@ -42,7 +42,7 @@ while True:
         i+=1
 
     except KeyboardInterrupt:
-        break
+        pass
 
 dataFile.close()
 ser.close()
