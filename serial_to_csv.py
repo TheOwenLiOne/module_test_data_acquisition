@@ -2,49 +2,98 @@ import serial
 import csv
 import thermistor_calc as tc
 
-dataFile = open('data.csv', 'w', newline='') # create csv file
-csvWriter = csv.writer(dataFile) # create csv writer object
-header = [str(i) for i in range(64)] # initiate columns for csv file
-csvWriter.writerow(header) # write header to csv file
 
-ser = serial.Serial('COM5', 115200)  # set the serial port to COM5, baud rate 115200
+def initialize_csv_file(filename, columns):
+    """
+    Create a .csv with 64 columns(one for each channel).
+    """
+    with open(filename, 'w', newline='') as data_file:
+        csv_writer = csv.writer(data_file)
+        header = [str(i) for i in range(columns)]
+        csv_writer.writerow(header)
 
-i = 0 # counter for number of lines read
-b = 2 # counter for channels
-step = [] #initial list of reading for a given time
-state = True #state variable
 
-choice = input("Enter 1 to start program or enter 2 to end program: ")
-print("Program started. Press Ctrl+C to pause")
+def read_serial_data(ser):
+    """
+    Extract and convert serial data to 'utf-8' strings.
+    """
+    try:
+        return ser.readline().decode('utf-8').strip()
+    except ValueError:
+        return None
 
-while state:
-    if choice == "1":
-        try:
-            line = ser.readline().decode('utf-8').strip()  # Read a line of serial data
-            if i>=2:
-                v = (float(line.split()[2]))/1000 # extract voltage from serial monitor (V)
-                temperature = tc.calculate_temperature(tc.calculate_resistance(abs(v))) # calculate temperature from voltage across thermistor (C)
-                step.append(temperature) # append temperature to list of readings for a given time
-                if temperature > -40:  
-                    a = b - 2     
-                    print(temperature, a)
-                if len(step) >= 64:
-                    csvWriter.writerow(step[:64]) # write 64 readings to csv file
-                    step = step[64:]
-                if i%64==0:
-                    b = 0
-                b+=1
-            i+=1
-            
-        except KeyboardInterrupt:
-            choice = input("Enter 1 to Continue, 2 to End: ")
 
-    elif choice == "2":
-        print("Program ended.")
-        state = False
+def formatting_serial(line):
+    """
+    Extract voltage from a 'utf-8' string.
+    """
+    try: 
+        return float(line.split()[2]) / 1000
+    except ValueError:
+        return None
 
-    else:
-        print("Invalid choice. Please enter 1 or 2")
 
-dataFile.close()
-ser.close()
+def main():
+
+    i = 0
+    b = 2
+    columns = 64
+    step = []
+    state = True
+
+    # Configuring serial communication and initializing CSV file
+    ser = serial.Serial('COM5', 115200) #initialize COM5 port with 115200 Baud
+    file_name = 'data.csv'
+    initialize_csv_file(file_name, columns)
+
+    #User I/O
+    choice = input("Enter 1 to start program or enter 2 to end program: ")
+    print("Program started. Press Ctrl+C to pause the program.")
+
+    #Main progam loop
+    while state:
+        if choice == "1":
+            try:
+                line = read_serial_data(ser)
+
+                # Skipping first two columns of serial data
+                if i >= 2:
+                    voltage = formatting_serial(line)
+                    temperature = round(tc.calculate_temperature(tc.calculate_resistance(abs(voltage))), 2)
+                    step.append(temperature)
+
+                    # Live monitoring
+                    if temperature > -40:
+                        channel = b - 2
+                        print(f"Channel {channel}: {temperature}")
+
+                    # Writing data to .csv
+                    if len(step) >= 64:
+                        with open(file_name, 'a', newline='') as data_file:
+                            csv_writer = csv.writer(data_file)
+                            csv_writer.writerow(step[:64])
+                            step = step[64:]
+
+                    if i % 64 == 0:
+                        b = 0
+
+                    b += 1
+                i += 1
+
+            except KeyboardInterrupt:
+                choice = input("Enter 1 to continue program or 2 to end program: ")
+
+        elif choice == "2":
+            print("Program ended. Data is stored in 'data.csv'.")
+            state = False
+
+        else:
+            print("Invalid entry. Please enter 1 or 2")
+            choice = input("Enter 1 to start program or enter 2 to end program: ")
+            print("Program started. Press Ctrl+C to pause the program.")
+
+    ser.close()
+
+
+if __name__ == "__main__":
+    main()
