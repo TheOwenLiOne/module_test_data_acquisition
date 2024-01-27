@@ -1,6 +1,6 @@
 # module testing | data acquisition
 
-[serial_to_csv.py](serial_to_csv.py) is a serial monitoring application which also writes all the data to [data.csv](data.csv)
+[serial_to_csv.py](serial_to_csv.py) is a serial monitoring application which displays live data to terminal and also writes all the data to [data.csv](data.csv).
 
 [sketch_a2d_daq_module_testing](sketch_a2d_daq_module_testing) contains the sketch(arduino firmware) for the [A2D 64CH DAQ](https://github.com/mbA2D/A2D_DAQ)
 
@@ -21,15 +21,21 @@ $$T = \frac{1}{{\frac{1}{{T_0}} + \frac{1}{B} \cdot \ln(R_{\text{{thermistor}}})
 ## steps
 
 1. git clone library
-2. download & install https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+2. download, install and unzip: https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip.
 3. connect the daq via usb
-4. run serial_to_csv.py
-5. ctrl-c to quit
-6. find data (celsius) in data.xlsx
+4. run serial_to_csv.py in your respective directory via terminal
 
 ## troubleshooting
 
 If Arduino IDE cannot find the port then make sure you are using a USB capable of data-transfer & you have the CP210x Driver installed: https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+
+If having trouble setting up:
+
+1. Navigate to device manager > view > show hidden devices > ports
+   ![](documentation/devicemanger.png)
+2. Click on Silicon Labs CP210x > Driver > Update Driver > Browse my computer for drivers. > Select unzipped folder: CP210x_Universal_Windows_Driver
+   ![](documentation/devicemanager2.PNG)
+   ![](documentation/devicemanager3.PNG)
 
 ## to-do
 
