@@ -42,7 +42,7 @@ def main():
     state = True
 
     # Configuring serial communication and initializing CSV file
-    ser = serial.Serial('COM5', 115200) #initialize COM5 port with 115200 Baud
+    ser = serial.Serial('COM3', 115200) #initialize COM5 port with 115200 Baud
     file_name = 'data.csv'
     initialize_csv_file(file_name, columns)
 
@@ -76,7 +76,7 @@ def main():
 
                     if i % 64 == 0:
                         b = 0
-
+                        print(f"---------------------------------------------------")
                     b += 1
                 i += 1
 
